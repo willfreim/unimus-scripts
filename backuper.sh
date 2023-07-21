@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#parametric variables
 UNIMUS_ADDRESS="172.17.0.1:8085"
 TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCJ9.Ko3FEfroI2hwNT-8M-8Us38gqwzmHHxypM7nWCqU2JA"
 HEADERS_ACCEPT="Accept: application/json"
@@ -20,7 +20,7 @@ process_files() {
             id=$(get_device_id "$address")
             [ $id = "null" ] && [ $CREATE_DEVICES = 1 ] && create_new_device "$address" && id=$(get_device_id "$address")
             for file in $(ls -tr "$subdir"); do
-                echo -e "\nCurrent file: " $file
+                #echo -e "\nCurrent file: " $file
                 if [ -f "$subdir/$file" ]; then
                     encoded_backup=$(base64 -w 0 "$subdir/$file")
                     isTextFile=$(file -b "$subdir/$file")
